@@ -11,6 +11,7 @@ export interface LangInfo {
 }
 
 export interface UserInfo {
+    userName: string;
     isHalloween: boolean;
     contributionCalendar: Array<CalendarInfo>;
     contributesLanguage: Array<LangInfo>;

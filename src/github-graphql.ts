@@ -45,6 +45,7 @@ export type Repositories = {
 export type ResponseType = {
     data?: {
         user: {
+            login: string;
             contributionsCollection: {
                 commitContributionsByRepository: CommitContributionsByRepository;
                 contributionCalendar: ContributionCalendar;
@@ -95,6 +96,7 @@ export const fetchFirst = async (
         query: `
             query($login: String!) {
                 user(login: $login) {
+                    login
                     contributionsCollection${yearArgs} {
                         contributionCalendar {
                             isHalloween

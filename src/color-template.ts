@@ -27,5 +27,9 @@ import nightRainbowSettings from './settings/NightRainbowSettings.json';
 export const NightRainbowSettings =
     nightRainbowSettings as type.RainbowColorSettings;
 
+import dayRainbowSettings from './settings/DayRainbowSettings.json';
+export const DayRainbowSettings =
+    dayRainbowSettings as type.RainbowColorSettings;
+
 import gitBlockSettings from './settings/GitBlockSettings.json';
 export const GitBlockSettings = gitBlockSettings as type.BitmapPatternSettings;

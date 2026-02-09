@@ -8,7 +8,7 @@ import * as util from './utils';
 import * as type from './type';
 
 const width = 1280;
-const height = 850;
+const height = 720;
 
 const pieHeight = 200 * 1.3;
 const pieWidth = pieHeight * 2;
@@ -103,103 +103,79 @@ export const createSvg = (
 
         const group = svg.append('g');
 
-        const positionXContrib = (width * 3) / 10;
-        const positionYContrib = height - 20;
+        // Top Right: Username and Date range
+        const topRightGroup = group.append('g')
+            .attr('transform', `translate(${width - 40}, 80)`);
 
-        group
-            .append('text')
-            .style('font-size', '32px')
+        topRightGroup.append('text')
+            .style('font-size', '64px')
             .style('font-weight', 'bold')
-            .attr('x', positionXContrib)
-            .attr('y', positionYContrib)
             .attr('text-anchor', 'end')
-            .text(util.inertThousandSeparator(userInfo.totalContributions))
+            .text(userInfo.userName)
             .attr('class', 'fill-strong');
 
+        // ISO 8601 format
+        const presentDate = (date: Date) => util.toIsoDate(date); // Helper function for date formatting
+        topRightGroup.append('text')
+            .style('font-size', '32px') // Increased from 24px
+            .attr('y', 55) // Adjusted spacing (was 40)
+            .attr('text-anchor', 'end')
+            .text(`${presentDate(userInfo.contributionCalendar[0].date)} | ${presentDate(userInfo.contributionCalendar[userInfo.contributionCalendar.length - 1].date)}`)
+            .attr('class', 'fill-weak');
+
+        // Stats
         const contribLabel = settings.l10n
             ? settings.l10n.contrib
             : 'contributions';
-        group
-            .append('text')
-            .style('font-size', '24px')
-            .attr('x', positionXContrib + 10)
-            .attr('y', positionYContrib)
-            .attr('text-anchor', 'start')
-            .attr('text-anchor', 'start')
+        const bottomLeftGroup = group.append('g')
+            .attr('transform', `translate(40, ${height - 150})`);
+
+        // Contributions
+        const contribGroup = bottomLeftGroup.append('g');
+        contribGroup.append('text')
+            .style('font-size', '48px') // Increased from 32px
+            .style('font-weight', 'bold')
+            .text(util.inertThousandSeparator(userInfo.totalContributions))
+            .attr('class', 'fill-strong');
+        contribGroup.append('text')
+            .style('font-size', '32px') // Increased from 24px
+            .attr('x', 120) // Offset for label (was 140)
             .text(contribLabel)
             .attr('class', 'fill-fg');
 
-        const positionXStar = (width * 5) / 10;
-        const positionYStar = positionYContrib;
-
-        // icon of star
-        group
-            .append('g')
-            .attr(
-                'transform',
-                `translate(${positionXStar - 32}, ${positionYStar - 28
-                }), scale(2)`,
-            )
-            .append('path')
-            .attr('fill-rule', 'evenodd')
-            .attr(
-                'd',
-                'M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z',
-            )
-            .attr('class', 'fill-fg');
-
-        group
-            .append('text')
-            .style('font-size', '32px')
+        // Stars
+        const starGroup = bottomLeftGroup.append('g')
+            .attr('transform', 'translate(0, 60)'); // Increased spacing (was 45)
+        starGroup.append('text') // Number first
+            .style('font-size', '48px')
             .style('font-weight', 'bold')
-            .attr('x', positionXStar + 10)
-            .attr('y', positionYStar)
-            .attr('text-anchor', 'start')
             .text(util.toScale(userInfo.totalStargazerCount))
             .attr('class', 'fill-fg')
             .append('title')
             .text(userInfo.totalStargazerCount);
-
-        const positionXFork = (width * 6) / 10;
-        const positionYFork = positionYContrib;
-
-        // icon of fork
-        group
-            .append('g')
-            .attr(
-                'transform',
-                `translate(${positionXFork - 32}, ${positionYFork - 28
-                }), scale(2)`,
-            )
+        starGroup.append('g') // Icon second
+            .attr('transform', 'translate(120, -28), scale(2.0)') // Offset 120, Scale 2.0
             .append('path')
             .attr('fill-rule', 'evenodd')
-            .attr(
-                'd',
-                'M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z',
-            )
+            .attr('d', 'M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z')
             .attr('class', 'fill-fg');
 
-        group
-            .append('text')
-            .style('font-size', '32px')
+        // Forks
+        const forkGroup = bottomLeftGroup.append('g')
+            .attr('transform', 'translate(0, 120)'); // Increased spacing (was 90)
+        forkGroup.append('text') // Number first
+            .style('font-size', '48px')
             .style('font-weight', 'bold')
-            .attr('x', positionXFork + 4)
-            .attr('y', positionYFork)
-            .attr('text-anchor', 'start')
             .text(util.toScale(userInfo.totalForkCount))
             .attr('class', 'fill-fg')
             .append('title')
             .text(userInfo.totalForkCount);
-
-        // ISO 8601 format
-        const startDate = userInfo.contributionCalendar[0].date;
-        const endDate =
-            userInfo.contributionCalendar[
-                userInfo.contributionCalendar.length - 1
-            ].date;
-        const period = `${util.toIsoDate(startDate)} / ${util.toIsoDate(
-            endDate,
-        )}`;
+        forkGroup.append('g') // Icon second
+            .attr('transform', 'translate(120, -28), scale(2.0)') // Offset 120, Scale 2.0
+            .append('path')
+            .attr('fill-rule', 'evenodd')
+            .attr('d', 'M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z')
+            .attr('class', 'fill-fg');
 
 
     }

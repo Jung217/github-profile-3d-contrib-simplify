@@ -102,6 +102,11 @@ export const main = async (): Promise<void> => {
             );
 
             f.writeFile(
+                'profile-day-rainbow.svg',
+                create.createSvg(userInfo, template.DayRainbowSettings, true),
+            );
+
+            f.writeFile(
                 'profile-gitblock.svg',
                 create.createSvg(userInfo, template.GitBlockSettings, true),
             );

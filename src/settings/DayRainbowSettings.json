@@ -1,0 +1,18 @@
+{
+    "type": "rainbow",
+    "backgroundColor": "#ffffff",
+    "foregroundColor": "#24292e",
+    "strongColor": "#24292e",
+    "weakColor": "#6a737d",
+    "radarColor": "#47a042",
+    "saturation": "60%",
+    "contribLightness": [
+        "95%",
+        "70%",
+        "60%",
+        "50%",
+        "40%"
+    ],
+    "duration": "10s",
+    "hueRatio": -7
+}
