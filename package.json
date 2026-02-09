@@ -7,7 +7,7 @@
     "start": "node .",
     "dev": "ts-node src/index.ts",
     "dev:watch": "ts-node-dev --respawn src/index.ts",
-    "clean": "rimraf dist/*",
+    "clean": "rimraf dist",
     "tsc": "tsc",
     "build": "npm-run-all clean tsc && ncc build dist0/index.js --license licenses.txt",
     "check-types": "tsc --noEmit",
@@ -61,8 +61,8 @@
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "@actions/github": "^6.0.0",
-    "axios": "^1.12.1",
+    "@actions/github": "^6.0.1",
+    "axios": "^1.7.9",
     "d3": "^7.9.0",
     "jsdom": "^26.0.0"
   },
