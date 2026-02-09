@@ -1,6 +1,6 @@
-name: GitHub-Profile-3D-Contrib
-description: Generate profile 3D Contributions
-author: yoshi389111
+name: GitHub-Profile-3D-Contrib-simplify
+description: Generate profile 3D Contributions simplified
+author: jung217
 
 runs:
   using: 'node24'
