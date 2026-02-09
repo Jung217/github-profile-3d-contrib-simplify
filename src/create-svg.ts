@@ -97,29 +97,9 @@ export const createSvg = (
             isForcedAnimation,
         );
 
-        // radar chart
-        radar.createRadarContrib(
-            svg,
-            userInfo,
-            radarX,
-            70,
-            radarWidth,
-            radarHeight,
-            settings,
-            isForcedAnimation,
-        );
 
-        // pie chart
-        pie.createPieLanguage(
-            svg,
-            userInfo,
-            40,
-            height - pieHeight - 70,
-            pieWidth,
-            pieHeight,
-            settings,
-            isForcedAnimation,
-        );
+
+
 
         const group = svg.append('g');
 
@@ -157,8 +137,7 @@ export const createSvg = (
             .append('g')
             .attr(
                 'transform',
-                `translate(${positionXStar - 32}, ${
-                    positionYStar - 28
+                `translate(${positionXStar - 32}, ${positionYStar - 28
                 }), scale(2)`,
             )
             .append('path')
@@ -189,8 +168,7 @@ export const createSvg = (
             .append('g')
             .attr(
                 'transform',
-                `translate(${positionXFork - 32}, ${
-                    positionYFork - 28
+                `translate(${positionXFork - 32}, ${positionYFork - 28
                 }), scale(2)`,
             )
             .append('path')
@@ -223,15 +201,7 @@ export const createSvg = (
             endDate,
         )}`;
 
-        group
-            .append('text')
-            .style('font-size', '16px')
-            .attr('x', width - 20)
-            .attr('y', 20)
-            .attr('dominant-baseline', 'hanging')
-            .attr('text-anchor', 'end')
-            .text(period)
-            .attr('class', 'fill-weak');
+
     }
     return container.html();
 };

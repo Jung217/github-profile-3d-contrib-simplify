@@ -31,12 +31,12 @@ const decideSeasonPatternNo = (date: Date): number => {
         dayOfMonth <= 7
             ? 0
             : dayOfMonth <= 14
-              ? 1
-              : dayOfMonth <= 21
-                ? 2
-                : dayOfMonth <= 28
-                  ? 3
-                  : 4;
+                ? 1
+                : dayOfMonth <= 21
+                    ? 2
+                    : dayOfMonth <= 28
+                        ? 3
+                        : 4;
 
     switch (month + 1) {
         case 9:
@@ -194,7 +194,7 @@ export const create3DContrib = (
     const dxx = dx * 0.9;
     const dyy = dy * 0.9;
 
-    const offsetX = dx * 7;
+    const offsetX = (width - weekcount * dx) / 2 + 3.5 * dx;
     const offsetY = height - (weekcount + 7) * dy;
 
     const group = svg.append('g');
@@ -317,9 +317,9 @@ export const create3DContrib = (
         const widthRight =
             settings.type === 'bitmap'
                 ? Math.max(
-                      1,
-                      settings.contribPatterns[contribLevel].right.width,
-                  )
+                    1,
+                    settings.contribPatterns[contribLevel].right.width,
+                )
                 : dxx;
         const scaleRight = Math.sqrt(dxx ** 2 + dyy ** 2) / widthRight;
         const heightRight = calHeight / scaleRight;
