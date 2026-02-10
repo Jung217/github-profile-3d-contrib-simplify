@@ -138,10 +138,6 @@ Add the path to the generated image in your README file.
 ![](./profile-3d-contrib-simplify/profile-green-animate.svg)
 ```
 
-## How to use (GitHub Actions) - Advanced examples
-
-- More info in [EXAMPLES.md](./EXAMPLES.md)
-
 ## How to use (local)
 
 1. Set the `GITHUB_TOKEN` environment variable to your personal access token.
