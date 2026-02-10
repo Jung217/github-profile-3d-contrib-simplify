@@ -109,32 +109,26 @@ The first time, run this workflow manually.
 
 The profile images are generated at the following paths:
 
-- profile-3d-contrib-simplify/profile-green-animate.svg
-    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-green-animate.svg)
-- profile-3d-contrib-simplify/profile-green.svg
-    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-green.svg)
-- profile-3d-contrib-simplify/profile-season-animate.svg
-    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-season-animate.svg)
-- profile-3d-contrib-simplify/profile-season.svg
-    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-season.svg)
-- profile-3d-contrib-simplify/profile-south-season-animate.svg
-    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-south-season-animate.svg)
-- profile-3d-contrib-simplify/profile-south-season.svg
-    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-south-season.svg)
-- profile-3d-contrib-simplify/profile-night-view.svg
-    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-night-view.svg)
-- profile-3d-contrib-simplify/profile-night-green.svg
-    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-night-green.svg)
-- profile-3d-contrib-simplify/profile-night-rainbow.svg
-    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-night-rainbow.svg)
 - profile-3d-contrib-simplify/profile-day-rainbow.svg
     ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-day-rainbow.svg)
 - profile-3d-contrib-simplify/profile-gitblock.svg
     ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-gitblock.svg)
+- profile-3d-contrib-simplify/profile-green.svg
+    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-green.svg)
+- profile-3d-contrib-simplify/profile-season.svg
+    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-season.svg)
+- profile-3d-contrib-simplify/profile-south-season.svg
+    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-south-season.svg)
+- profile-3d-contrib-simplify/profile-night-green.svg
+    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-night-green.svg)
+- profile-3d-contrib-simplify/profile-night-rainbow.svg
+    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-night-rainbow.svg)
+- profile-3d-contrib-simplify/profile-night-view.svg
+    ![svg](https://raw.githubusercontent.com/Jung217/github-profile-3d-contrib-simplify/refs/heads/main/profile-3d-contrib-simplify/profile-night-view.svg)
 
-If you specify the `SETTING_JSON` environment variable without a `fileName` property in the json file, the following image will be generated:
-
-- `profile-3d-contrib-simplify/profile-customize.svg`
+> If you specify the `SETTING_JSON` environment variable without a `fileName` property in the json file, the following image will be generated:
+> 
+> - `profile-3d-contrib-simplify/profile-customize.svg`
 
 ## Step 4. Add image to README.md
 
