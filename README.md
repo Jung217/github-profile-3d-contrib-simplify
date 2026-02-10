@@ -28,7 +28,7 @@ Create a workflow file like the one below.
     name: GitHub-Profile-3D-Contrib-simplify
     
     on:
-      schedule: # 00:00 TW (UTC+8) == 16:00 UTC
+      schedule:
         - cron: "0 16 * * *"
       workflow_dispatch:
     
@@ -54,16 +54,27 @@ Create a workflow file like the one below.
     ```
 
 > [!NOTE]
-> You can change your GitHub settings to include contributions from private repositories.
-To do this, click **Contribution settings** in the top-right corner of the contribution calendar, or go to your **profile picture (top right) → Settings → Public profile → Contributions & Activity**, then check Include private contributions on my profile.
+> The `secrets.GITHUB_TOKEN` is a special access token automatically created by GitHub.
+> You can change your token to include contributions from private repositories.
+> 
+> To do this, go to your **profile picture (top right) → Settings → Developer Settings → Personal access tokens → tokens (classic) → Generate new token → Generate new token (classic)**, check like the picture shows, then **Generate token** and **Copy**.
+> 
+> <img width="70%" alt="image" src="https://github.com/user-attachments/assets/939a6ae6-9bbe-4b0c-82e4-77539beab1e3" />
 >
-> If you want to include additional activities from private repositories, register a personal access token as a secret and assign it to the **GITHUB_TOKEN** environment variable in the workflow file.
-However, in most cases, the default **secrets.GITHUB_TOKEN** is sufficient.
+> After get the token, go back to your "username repo" and add a **New Repository Secret**, then change into your own token.
+>
+> <img width="70%" alt="image" src="https://github.com/user-attachments/assets/c6aaf5c1-5203-45ae-b055-8267c8ed2509" />
+```diff
+          env:
+-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
++           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+            USERNAME: ${{ github.repository_owner }}
+```
 
-The schedule is set to run once a day by default.
-You can change the scheduled time as you like.
+> The schedule is set to run once a day by default.
+> You can change the scheduled time as you like.
 
-This will add the workflow to your repository.
+> This will add the workflow to your repository.
 
 ### Environment variables
 
@@ -76,41 +87,14 @@ In the sample, only `GITHUB_TOKEN` and `USERNAME` are specified as environment v
 - `GITHUB_ENDPOINT` : (optional) Github GraphQL endpoint. For example, if you want to create a contribution calendar based on your company's GitHub Enterprise activity instead of GitHub.com, set this environment variable. e.g. `https://github.mycompany.com/api/graphql` - since ver. 0.8.0
 - `YEAR` : (optional) For past calendars, specify the year. This is intended to be specified when running the tool from the command line. - since ver. 0.8.0
 
-### About `GITHUB_TOKEN`
-
-The `secrets.GITHUB_TOKEN` set in the `GITHUB_TOKEN` environment variable in the sample is a special access token automatically created by GitHub.
-
-- GitHub Docs: [Use GITHUB_TOKEN for authentication in workflows](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token)
-
-If you want to generate a contribution calendar for public repositories only, use this value.
-There is no need to create a secret manually.
-
-Also, if you want to include activity in your private repositories in your contribution calendar, check "Include private contributions on my profile" in the "Profile settings" section of "Public profile" in your profile settings.
-
-Furthermore, if you want to include additional activity information from private repositories, create an access token with the appropriate permissions.
-Register that access token as a secret with any name you like (For example, `MY_PERSONAL_ACCESS_TOKEN`).
-However, please note that user-created secrets cannot start with `GITHUB_`.
-
-- GitHub Docs: [Secrets](https://docs.github.com/en/actions/concepts/security/secrets)
-
-Set that secret as the value of the `GITHUB_TOKEN` environment variable.
-
-```diff
-          env:
--           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-+           GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN }}
-            USERNAME: ${{ github.repository_owner }}
-```
-
 ### About the time to schedule
 
-In the sample, it is set to start at 18:00 UTC.
-This is because it will run at midnight JST, which is the author's local time.
+In the sample, it is set to start at 16:00 UTC.
 
 ```yaml
 on:
-  schedule: # 03:00 JST == 18:00 UTC
-    - cron: "0 18 * * *"
+  schedule: # 00:00 TW (UTC+8) == 16:00 UTC
+    - cron: "0 16 * * *"
 ```
 
 You can change it to any time you like.
@@ -121,7 +105,7 @@ However, please note that the time must be specified in UTC.
 
 The first time, run this workflow manually.
 
-- `Actions` -> `GitHub-Profile-3D-Contrib` -> `Run workflow`
+- `Actions` -> `GitHub-Profile-3D-Contrib-simplify` -> `Run workflow`
 
 The profile images are generated at the following paths:
 
