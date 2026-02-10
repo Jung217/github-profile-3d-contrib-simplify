@@ -41,7 +41,7 @@ Create a workflow file like the one below.
     
           - uses: Jung217/github-profile-3d-contrib-simplify@v0.1.0
             env:
-              GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               USERNAME: ${{ github.repository_owner }}
     
           - name: Commit & Push
